@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="unknown.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:unknown"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:unknown.Model"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Frame Name="myframe" ></Frame>
+        <ListView ItemsSource="{x:Bind Rooms}" Name="myListView">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="data:Rent">
+                    <StackPanel Orientation="Horizontal" Margin="10" >
+                        <Image Source="{x:Bind Image}" Height="150"
+                               Width="150"/>
+                        <StackPanel Margin="20,0">
+                            <TextBlock Text="{x:Bind Category}"/>
+                            <TextBlock Text="{x:Bind Location}"/>
+                            <TextBlock Text="{x:Bind Contact}"/>
+                            
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Column="1" Background="LightBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="110" Text="Looking for Renting" 
+                       TextWrapping="Wrap" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+
+                </Grid.ColumnDefinitions>
+                <Button Content="login" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Click="Button_Click"/>
+                <Button Content="Register" FontSize="50" VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Grid.Column="1" Click="Button_Click_1"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
